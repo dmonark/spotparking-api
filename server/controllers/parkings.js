@@ -6,7 +6,7 @@ module.exports = {
     return parking
       .findAll({
         where: {
-					outAt: null
+					outAt: '0'
 				},
 				attributes: ['spot'],
 				order: [
@@ -26,7 +26,8 @@ module.exports = {
 					.create({
 						spot: whichSpot,
 						plate: req.body.plate,
-						color: req.body.color
+						color: req.body.color,
+						outAt: '0'
 					})
 					.then((data) => res.status(201).send(data))
 					.catch((error) => res.status(500).send(error));		
@@ -40,9 +41,36 @@ module.exports = {
 				outAt: '1'
 			},{
 				where: {
-					outAt: null,
+					outAt: '0',
 					spot: req.body.spot
 				}
+			})
+			.then(() => res.sendStatus(200))
+			.catch((error) => res.status(500).send(error));
+	},
+	
+	summary(req, res) {
+		let whereList = {}
+		whereList['outAt'] = '0'
+		
+		if(req.body.color)
+			whereList['color'] = req.body.color
+		
+		if(req.body.type)
+			whereList['outAt'] = req.body.type
+		
+		if(req.body.plate)
+			whereList['plate'] = req.body.plate
+		
+		if(req.body.slot)
+			whereList['slot'] = req.body.slot
+		
+		return parking
+      .findAll({
+				where: whereList,
+				order: [
+          ['id', 'DESC']
+        ],
 			})
 			.then((data) => res.status(200).send(data))
 			.catch((error) => res.status(500).send(error));
