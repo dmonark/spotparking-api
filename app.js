@@ -9,8 +9,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(cors({
-  origin: '*',
-	exposedHeaders: ['x-token', 'Content-Length']
+  origin: '*'
 }));
 
 require('./server/routes')(app);

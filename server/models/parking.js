@@ -18,10 +18,9 @@ module.exports = (sequelize, DataTypes) => {
 				'red'
       ],
       defaultValue: 'white'
-		}
+		},
 		outAt: {
-			type: DataTypes.DATE,
-			allowNull: false
+			type: DataTypes.DATE
 		}
   });
   parking.associate = function(models) {
