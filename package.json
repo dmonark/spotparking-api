@@ -1,0 +1,19 @@
+{
+  "name": "spotparking-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdedakiya/spotparking-api.git"
+  },
+  "author": "Monark Dedakiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdedakiya/spotparking-api/issues"
+  },
+  "homepage": "https://github.com/mdedakiya/spotparking-api#readme"
+}
