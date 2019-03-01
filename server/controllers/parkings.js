@@ -22,7 +22,6 @@ module.exports = {
 						break;
 					}
 				}
-				console.log(req.body)
 				return parking
 					.create({
 						spot: whichSpot,
@@ -30,7 +29,7 @@ module.exports = {
 						color: req.body.color,
 						outAt: '0'
 					})
-					.then((data) => res.status(201).send(data))
+					.then((data) => res.status(200).send(data))
 					.catch((error) => res.status(500).send(error));		
 			})
       .catch((error) => res.status(500).send(error));
@@ -44,9 +43,10 @@ module.exports = {
 				where: {
 					outAt: '0',
 					spot: req.body.spot
-				}
+				},
+				returning: true
 			})
-			.then(() => res.sendStatus(200))
+			.then((data) => res.status(200).send(data))
 			.catch((error) => res.status(500).send(error));
 	},
 	
@@ -68,7 +68,6 @@ module.exports = {
 		if(req.body.spot)
 			whereList['spot'] = req.body.spot
 		
-		console.log(whereList)
 		return parking
       .findAll({
 				where: whereList,

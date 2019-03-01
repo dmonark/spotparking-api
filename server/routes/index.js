@@ -5,5 +5,5 @@ const parkingsValidator = require('../validator').parkings;
 module.exports = (app) => {
   app.post('/api/parkings', parkingsValidator.create, parkingsController.create);
 	app.post('/api/parkings/summary', parkingsController.summary);
-	app.delete('/api/parkings', parkingsValidator.remove, parkingsController.remove);
+	app.post('/api/parkings/remove', parkingsValidator.remove, parkingsController.remove);
 };
