@@ -27,7 +27,8 @@ module.exports = {
         defaultValue: 'white'
       },
       outAt: {
-        type: Sequelize.DATE
+        type: Sequelize.BOOLEAN,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

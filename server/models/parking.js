@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'white'
 		},
 		outAt: {
-			type: DataTypes.DATE
+			type: DataTypes.BOOLEAN,
+			allowNull: false
 		}
   });
   parking.associate = function(models) {

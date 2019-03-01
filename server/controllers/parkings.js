@@ -22,6 +22,7 @@ module.exports = {
 						break;
 					}
 				}
+				console.log(req.body)
 				return parking
 					.create({
 						spot: whichSpot,
@@ -51,20 +52,23 @@ module.exports = {
 	
 	summary(req, res) {
 		let whereList = {}
-		whereList['outAt'] = '0'
-		
+	
 		if(req.body.color)
 			whereList['color'] = req.body.color
 		
 		if(req.body.type)
 			whereList['outAt'] = req.body.type
 		
-		if(req.body.plate)
-			whereList['plate'] = req.body.plate
+		if(req.body.plate){
+			whereList['plate'] = {
+				'$iLike': "%"+req.body.plate+"%"
+			}
+		}
 		
-		if(req.body.slot)
-			whereList['slot'] = req.body.slot
+		if(req.body.spot)
+			whereList['spot'] = req.body.spot
 		
+		console.log(whereList)
 		return parking
       .findAll({
 				where: whereList,
